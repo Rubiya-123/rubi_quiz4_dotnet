@@ -10,10 +10,8 @@ steps:
     packageType: 'sdk'
     version: '8.x'
 
-- script: dotnet build --configuration Release
-  displayName: Build project
+- script: dotnet restore rubi_quiz4_dotnet.sln
+  displayName: Restore dependencies
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(System.DefaultWorkingDirectory)'
-    artifactName: 'drop'
+- script: dotnet build rubi_quiz4_dotnet.sln --configuration Release
+  displayName: Build project
